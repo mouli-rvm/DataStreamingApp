@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_USER: mouli # Optional: Sets a custom user
+      POSTGRES_DB: mydb # Optional: Creates a custom database
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      # Optional: Mount initialization scripts
+      # - ./init-scripts:/docker-entrypoint-initdb.d
+
+volumes:
+  postgres_data:
